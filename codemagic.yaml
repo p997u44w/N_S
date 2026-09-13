@@ -3,7 +3,6 @@ workflows:
     name: Flutter APK Build
     instance_type: mac_mini_m2
     max_build_duration: 60
-    working_directory: frontend
     environment:
       flutter: stable
       java: 17
@@ -11,14 +10,6 @@ workflows:
         PUB_HOSTED_URL: "https://pub.flutter-io.cn"
         FLUTTER_STORAGE_BASE_URL: "https://storage.flutter-io.cn"
     scripts:
-      - name: Debug - Show directory
-        script: |
-          echo "=== Current directory ==="
-          pwd
-          echo "=== Files in current directory ==="
-          ls -la
-          echo "=== Files in parent ==="
-          ls -la ..
       - name: Get Flutter packages
         script: |
           flutter pub get
