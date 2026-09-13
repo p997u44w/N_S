@@ -7,10 +7,15 @@ workflows:
     environment:
       flutter: stable
       java: 17
+      vars:
+        PUB_HOSTED_URL: "https://pub.flutter-io.cn"
+        FLUTTER_STORAGE_BASE_URL: "https://storage.flutter-io.cn"
     scripts:
       - name: Get Flutter packages
-        script: flutter pub get
+        script: |
+          flutter pub get
       - name: Build APK
-        script: flutter build apk --release
+        script: |
+          flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
