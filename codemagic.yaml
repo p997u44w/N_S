@@ -1,31 +1,16 @@
 workflows:
-  nexa-android:
-    name: Nexa Android Build
+  flutter-workflow:
+    name: Flutter APK Build
+    instance_type: mac_mini_m2
     max_build_duration: 60
-
+    working_directory: frontend
     environment:
       flutter: stable
       java: 17
-
-      vars:
-        PACKAGE_NAME: "com.example.nexa"
-
     scripts:
       - name: Get Flutter packages
-        script: |
-          flutter pub get
-
-      - name: Check Flutter
-        script: |
-          flutter doctor -v
-          flutter --version
-
-      - name: Build Android APK
-        script: |
-          flutter build apk --release
-
+        script: flutter pub get
+      - name: Build APK
+        script: flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
-      - build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
-      - build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
-      - build/app/outputs/flutter-apk/app-x86_64-release.apk
